@@ -8,38 +8,108 @@
 </head>
 <body>
 
-    <header>
-        <h1>JC School Toolkit</h1>
-        <p class="subtitle">Quick tools for school, productivity, and utilities</p>
-    </header>
+<header>
+    <h1>JC School Toolkit</h1>
+    <p class="subtitle">Everything you need for school — fast, simple, organized</p>
+</header>
 
-    <main id="tool-container">
+<main id="tool-container">
 
-        <!-- Tool: GPA Calculator -->
-        <section class="tool">
-            <h2>GPA Calculator</h2>
-            <input type="number" id="gpa-input" placeholder="Enter grade (0–100)">
-            <button onclick="calcGPA()">Convert</button>
-            <p id="gpa-output"></p>
-        </section>
+    <!-- GPA Calculator -->
+    <section class="tool">
+        <h2>GPA Calculator</h2>
+        <input type="number" id="gpa-input" placeholder="Enter grade (0–100)">
+        <button onclick="calcGPA()">Convert</button>
+        <p id="gpa-output"></p>
+    </section>
 
-        <!-- Tool: Random Password Generator -->
-        <section class="tool">
-            <h2>Password Generator</h2>
-            <button onclick="generatePassword()">Generate</button>
-            <p id="password-output"></p>
-        </section>
+    <!-- Password Generator -->
+    <section class="tool">
+        <h2>Password Generator</h2>
+        <button onclick="generatePassword()">Generate</button>
+        <p id="password-output"></p>
+    </section>
 
-        <!-- Tool: Quick Notes -->
-        <section class="tool">
-            <h2>Quick Notes</h2>
-            <textarea id="notes-box" placeholder="Write notes here..."></textarea>
-            <button onclick="saveNotes()">Save</button>
-            <p id="notes-status"></p>
-        </section>
+    <!-- Quick Notes -->
+    <section class="tool">
+        <h2>Quick Notes</h2>
+        <textarea id="notes-box" placeholder="Write notes here..."></textarea>
+        <button onclick="saveNotes()">Save</button>
+        <p id="notes-status"></p>
+    </section>
 
-    </main>
+    <!-- Homework Agenda Calendar -->
+    <section class="tool">
+        <h2>Homework Agenda</h2>
 
-    <script src="script.js"></script>
+        <div id="calendar">
+            <div id="calendar-header">
+                <button onclick="prevMonth()">‹</button>
+                <h3 id="month-year"></h3>
+                <button onclick="nextMonth()">›</button>
+            </div>
+            <div id="calendar-grid"></div>
+        </div>
+
+        <div id="agenda">
+            <h3 id="agenda-date">Select a day</h3>
+            <textarea id="agenda-text" placeholder="Homework for this day..."></textarea>
+            <button onclick="saveAgenda()">Save</button>
+            <p id="agenda-status"></p>
+        </div>
+    </section>
+
+    <!-- To‑Do List -->
+    <section class="tool">
+        <h2>To‑Do List</h2>
+        <input id="todo-input" placeholder="New task...">
+        <button onclick="addTodo()">Add</button>
+        <ul id="todo-list"></ul>
+    </section>
+
+    <!-- Pomodoro Timer -->
+    <section class="tool">
+        <h2>Pomodoro Timer</h2>
+        <p id="pomodoro-display">25:00</p>
+        <button onclick="startPomodoro()">Start</button>
+        <button onclick="resetPomodoro()">Reset</button>
+    </section>
+
+    <!-- Unit Converter -->
+    <section class="tool">
+        <h2>Unit Converter (cm ↔ inches)</h2>
+        <input id="cm-input" placeholder="Centimeters">
+        <button onclick="cmToIn()">→</button>
+        <input id="in-input" placeholder="Inches">
+        <button onclick="inToCm()">←</button>
+    </section>
+
+    <!-- Random Name Picker -->
+    <section class="tool">
+        <h2>Random Name Picker</h2>
+        <textarea id="names-box" placeholder="Enter names, one per line"></textarea>
+        <button onclick="pickName()">Pick</button>
+        <p id="picked-name"></p>
+    </section>
+
+    <!-- Calculator -->
+    <section class="tool">
+        <h2>Calculator</h2>
+        <input id="calc-display" readonly>
+        <div id="calc-buttons"></div>
+    </section>
+
+    <!-- Stopwatch -->
+    <section class="tool">
+        <h2>Stopwatch</h2>
+        <p id="stopwatch-display">00:00:00</p>
+        <button onclick="startStopwatch()">Start</button>
+        <button onclick="stopStopwatch()">Stop</button>
+        <button onclick="resetStopwatch()">Reset</button>
+    </section>
+
+</main>
+
+<script src="script.js"></script>
 </body>
 </html>
