@@ -212,7 +212,10 @@ function loadAllQuizzes() {
 }
 
 window.onload = () => {
+    // Load all external quiz files
     loadAllQuizzes();
+
+    // Initialize all toolkit systems
     renderCalendar();
     updatePomodoro();
     updateStopwatch();
@@ -221,9 +224,13 @@ window.onload = () => {
     populateQuizSelect();
     initDashboard();
 
+    // Load saved notes
     const savedNotes = localStorage.getItem("jc_notes");
-    if (savedNotes) document.getElementById("notes-box").value = savedNotes;
+    if (savedNotes) {
+        document.getElementById("notes-box").value = savedNotes;
+    }
 };
+
 const quizBank = {
     "g6-fractions": {
         name: "Grade 6 – Fractions",
