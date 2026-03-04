@@ -1,69 +1,192 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0d0f14;
-    color: white;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: radial-gradient(circle at top, #1b2735 0, #090a0f 60%);
+    color: #e5ecff;
 }
 
-header {
-    text-align: center;
-    padding: 30px 0;
-    background: #11141c;
-    border-bottom: 2px solid #1e90ff;
+#app {
+    display: flex;
+    min-height: 100vh;
 }
 
-.subtitle {
-    color: #9bbcff;
+/* SIDEBAR */
+
+#sidebar {
+    width: 230px;
+    background: #05070c;
+    border-right: 1px solid #1e293b;
+    padding: 20px 15px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
 }
 
-#tool-container {
-    width: 90%;
-    max-width: 900px;
-    margin: 30px auto;
+#sidebar h1 {
+    font-size: 1.4rem;
+    margin: 0 0 15px;
+    color: #60a5ff;
+}
+
+#sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#sidebar li {
+    margin-bottom: 8px;
+}
+
+#sidebar button {
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: 1px solid transparent;
+    color: #cbd5f5;
+    padding: 8px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: 0.15s;
+}
+
+#sidebar button:hover {
+    background: #0b1220;
+    border-color: #1e90ff;
+    color: #ffffff;
+}
+
+/* MAIN */
+
+#main {
+    flex: 1;
+    padding: 25px 20px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
 .tool {
-    background: #161a22;
+    background: rgba(15, 23, 42, 0.9);
     padding: 20px;
     margin-bottom: 25px;
-    border-radius: 10px;
-    border-left: 4px solid #1e90ff;
+    border-radius: 14px;
+    border: 1px solid #1e293b;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(10px);
 }
 
 .tool h2 {
     margin-top: 0;
-    color: #1e90ff;
+    color: #60a5ff;
+    letter-spacing: 0.03em;
 }
 
-input, textarea {
+.subtitle {
+    color: #9bbcff;
+    margin-top: 4px;
+}
+
+/* GRID / LAYOUT HELPERS */
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 15px;
+}
+
+.two-col {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+    gap: 20px;
+}
+
+.card {
+    background: #020617;
+    border-radius: 12px;
+    padding: 14px 14px 16px;
+    border: 1px solid #1e293b;
+}
+
+.card h3 {
+    margin-top: 0;
+    color: #93c5fd;
+}
+
+/* FORM ELEMENTS */
+
+input, textarea, select {
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    background: #0f1218;
-    border: 1px solid #1e90ff;
-    color: white;
-    border-radius: 6px;
+    padding: 9px 10px;
+    margin: 8px 0;
+    background: #020617;
+    border: 1px solid #1e293b;
+    color: #e5ecff;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+textarea {
+    min-height: 80px;
+    resize: vertical;
 }
 
 button {
-    background: #1e90ff;
+    background: linear-gradient(135deg, #2563eb, #38bdf8);
     border: none;
-    padding: 10px 15px;
+    padding: 8px 14px;
     color: white;
-    border-radius: 6px;
+    border-radius: 999px;
     cursor: pointer;
-    transition: 0.2s;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: transform 0.1s, box-shadow 0.1s, opacity 0.1s;
 }
 
 button:hover {
-    background: #3aa0ff;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.4);
 }
 
-/* Calendar */
+button:active {
+    transform: translateY(0);
+    box-shadow: none;
+    opacity: 0.9;
+}
+
+.inline {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.inline input {
+    flex: 1;
+}
+
+/* CALENDAR */
+
 #calendar-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 8px;
+}
+
+#calendar-header h3 {
+    margin: 0;
+    color: #93c5fd;
 }
 
 #calendar-grid {
@@ -73,35 +196,120 @@ button:hover {
 }
 
 .calendar-day {
-    padding: 12px;
-    background: #0f1218;
-    border: 1px solid #1e90ff;
+    padding: 10px;
+    background: #020617;
+    border: 1px solid #1e293b;
     text-align: center;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
+    font-size: 0.85rem;
 }
 
 .calendar-day.selected,
 .calendar-day:hover {
-    background: #1e90ff;
+    background: #2563eb;
+    border-color: #60a5ff;
 }
 
-/* Calculator */
+/* TABLES */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+th, td {
+    border-bottom: 1px solid #1e293b;
+    padding: 6px 4px;
+}
+
+th {
+    text-align: left;
+    color: #9ca3af;
+}
+
+/* LISTS */
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#todo-list li {
+    padding: 6px 8px;
+    margin-bottom: 4px;
+    background: #020617;
+    border-radius: 6px;
+    border: 1px solid #1e293b;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+#todo-list li:hover {
+    background: #111827;
+}
+
+/* CALCULATOR */
+
 #calc-buttons {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 6px;
+    margin-top: 10px;
 }
 
 .calc-btn {
-    padding: 15px;
-    background: #0f1218;
-    border: 1px solid #1e90ff;
+    padding: 12px;
+    background: #020617;
+    border-radius: 8px;
+    border: 1px solid #1e293b;
     text-align: center;
-    border-radius: 6px;
     cursor: pointer;
+    font-size: 1rem;
 }
 
 .calc-btn:hover {
-    background: #1e90ff;
+    background: #2563eb;
+}
+
+/* SMALL TEXT */
+
+.muted {
+    color: #9ca3af;
+    font-size: 0.85rem;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 800px) {
+    #app {
+        flex-direction: column;
+    }
+    #sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+    #sidebar h1 {
+        width: 100%;
+    }
+    #sidebar ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+    #sidebar li {
+        margin-bottom: 0;
+    }
+    #sidebar button {
+        font-size: 0.8rem;
+    }
+    .two-col {
+        grid-template-columns: 1fr;
+    }
 }
