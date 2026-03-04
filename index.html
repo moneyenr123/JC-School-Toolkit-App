@@ -8,107 +8,304 @@
 </head>
 <body>
 
-<header>
-    <h1>JC School Toolkit</h1>
-    <p class="subtitle">Everything you need for school — fast, simple, organized</p>
-</header>
+<div id="app">
+    <nav id="sidebar">
+        <h1>JC Toolkit</h1>
+        <ul>
+            <li><button onclick="scrollToSection('dashboard')">Dashboard</button></li>
+            <li><button onclick="scrollToSection('agenda')">Homework Agenda</button></li>
+            <li><button onclick="scrollToSection('notes')">Notes</button></li>
+            <li><button onclick="scrollToSection('todo')">To‑Do</button></li>
+            <li><button onclick="scrollToSection('gpa')">GPA</button></li>
+            <li><button onclick="scrollToSection('grade-tracker')">Grade Tracker</button></li>
+            <li><button onclick="scrollToSection('schedule')">Class Schedule</button></li>
+            <li><button onclick="scrollToSection('flashcards')">Flashcards</button></li>
+            <li><button onclick="scrollToSection('quizzes')">Quizzes</button></li>
+            <li><button onclick="scrollToSection('timers')">Timers</button></li>
+            <li><button onclick="scrollToSection('converters')">Converters</button></li>
+            <li><button onclick="scrollToSection('cbm')">CBM</button></li>
+            <li><button onclick="scrollToSection('calculator')">Calculator</button></li>
+            <li><button onclick="scrollToSection('extras')">Extras</button></li>
+        </ul>
+    </nav>
 
-<main id="tool-container">
+    <main id="main">
 
-    <!-- GPA Calculator -->
-    <section class="tool">
-        <h2>GPA Calculator</h2>
-        <input type="number" id="gpa-input" placeholder="Enter grade (0–100)">
-        <button onclick="calcGPA()">Convert</button>
-        <p id="gpa-output"></p>
-    </section>
-
-    <!-- Password Generator -->
-    <section class="tool">
-        <h2>Password Generator</h2>
-        <button onclick="generatePassword()">Generate</button>
-        <p id="password-output"></p>
-    </section>
-
-    <!-- Quick Notes -->
-    <section class="tool">
-        <h2>Quick Notes</h2>
-        <textarea id="notes-box" placeholder="Write notes here..."></textarea>
-        <button onclick="saveNotes()">Save</button>
-        <p id="notes-status"></p>
-    </section>
-
-    <!-- Homework Agenda Calendar -->
-    <section class="tool">
-        <h2>Homework Agenda</h2>
-
-        <div id="calendar">
-            <div id="calendar-header">
-                <button onclick="prevMonth()">‹</button>
-                <h3 id="month-year"></h3>
-                <button onclick="nextMonth()">›</button>
+        <!-- DASHBOARD -->
+        <section class="tool" id="dashboard">
+            <h2>Dashboard</h2>
+            <p class="subtitle">Quick glance at today</p>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>Today’s Date</h3>
+                    <p id="dash-date"></p>
+                </div>
+                <div class="card">
+                    <h3>Next Homework</h3>
+                    <p id="dash-homework">Open Agenda & select a day.</p>
+                </div>
+                <div class="card">
+                    <h3>Weather</h3>
+                    <p id="dash-weather">Set in Weather widget.</p>
+                </div>
             </div>
-            <div id="calendar-grid"></div>
-        </div>
+        </section>
 
-        <div id="agenda">
-            <h3 id="agenda-date">Select a day</h3>
-            <textarea id="agenda-text" placeholder="Homework for this day..."></textarea>
-            <button onclick="saveAgenda()">Save</button>
-            <p id="agenda-status"></p>
-        </div>
-    </section>
+        <!-- HOMEWORK AGENDA -->
+        <section class="tool" id="agenda">
+            <h2>Homework Agenda</h2>
+            <div class="two-col">
+                <div>
+                    <div id="calendar">
+                        <div id="calendar-header">
+                            <button onclick="prevMonth()">‹</button>
+                            <h3 id="month-year"></h3>
+                            <button onclick="nextMonth()">›</button>
+                        </div>
+                        <div id="calendar-grid"></div>
+                    </div>
+                </div>
+                <div>
+                    <h3 id="agenda-date">Select a day</h3>
+                    <textarea id="agenda-text" placeholder="Homework for this day..."></textarea>
+                    <button onclick="saveAgenda()">Save</button>
+                    <p id="agenda-status"></p>
+                </div>
+            </div>
+        </section>
 
-    <!-- To‑Do List -->
-    <section class="tool">
-        <h2>To‑Do List</h2>
-        <input id="todo-input" placeholder="New task...">
-        <button onclick="addTodo()">Add</button>
-        <ul id="todo-list"></ul>
-    </section>
+        <!-- NOTES -->
+        <section class="tool" id="notes">
+            <h2>Quick Notes</h2>
+            <textarea id="notes-box" placeholder="Write notes here..."></textarea>
+            <button onclick="saveNotes()">Save</button>
+            <p id="notes-status"></p>
+        </section>
 
-    <!-- Pomodoro Timer -->
-    <section class="tool">
-        <h2>Pomodoro Timer</h2>
-        <p id="pomodoro-display">25:00</p>
-        <button onclick="startPomodoro()">Start</button>
-        <button onclick="resetPomodoro()">Reset</button>
-    </section>
+        <!-- TO-DO -->
+        <section class="tool" id="todo">
+            <h2>To‑Do List</h2>
+            <div class="inline">
+                <input id="todo-input" placeholder="New task...">
+                <button onclick="addTodo()">Add</button>
+            </div>
+            <ul id="todo-list"></ul>
+        </section>
 
-    <!-- Unit Converter -->
-    <section class="tool">
-        <h2>Unit Converter (cm ↔ inches)</h2>
-        <input id="cm-input" placeholder="Centimeters">
-        <button onclick="cmToIn()">→</button>
-        <input id="in-input" placeholder="Inches">
-        <button onclick="inToCm()">←</button>
-    </section>
+        <!-- GPA -->
+        <section class="tool" id="gpa">
+            <h2>GPA Calculator</h2>
+            <input type="number" id="gpa-input" placeholder="Enter grade (0–100)">
+            <button onclick="calcGPA()">Convert</button>
+            <p id="gpa-output"></p>
+        </section>
 
-    <!-- Random Name Picker -->
-    <section class="tool">
-        <h2>Random Name Picker</h2>
-        <textarea id="names-box" placeholder="Enter names, one per line"></textarea>
-        <button onclick="pickName()">Pick</button>
-        <p id="picked-name"></p>
-    </section>
+        <!-- GRADE TRACKER -->
+        <section class="tool" id="grade-tracker">
+            <h2>Grade Tracker</h2>
+            <div class="inline">
+                <input id="gt-class" placeholder="Class name">
+                <input id="gt-grade" type="number" placeholder="Grade %">
+                <button onclick="addGrade()">Add</button>
+            </div>
+            <table id="gt-table">
+                <thead>
+                    <tr><th>Class</th><th>Grade</th></tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <p id="gt-average"></p>
+        </section>
 
-    <!-- Calculator -->
-    <section class="tool">
-        <h2>Calculator</h2>
-        <input id="calc-display" readonly>
-        <div id="calc-buttons"></div>
-    </section>
+        <!-- CLASS SCHEDULE -->
+        <section class="tool" id="schedule">
+            <h2>Class Schedule</h2>
+            <div class="inline">
+                <input id="cs-period" placeholder="Period / Time">
+                <input id="cs-class" placeholder="Class name">
+                <button onclick="addClassSchedule()">Add</button>
+            </div>
+            <ul id="cs-list"></ul>
+        </section>
 
-    <!-- Stopwatch -->
-    <section class="tool">
-        <h2>Stopwatch</h2>
-        <p id="stopwatch-display">00:00:00</p>
-        <button onclick="startStopwatch()">Start</button>
-        <button onclick="stopStopwatch()">Stop</button>
-        <button onclick="resetStopwatch()">Reset</button>
-    </section>
+        <!-- FLASHCARDS -->
+        <section class="tool" id="flashcards">
+            <h2>Flashcard System</h2>
+            <div class="two-col">
+                <div>
+                    <input id="fc-front" placeholder="Question / Term">
+                    <input id="fc-back" placeholder="Answer / Definition">
+                    <button onclick="addFlashcard()">Add Card</button>
+                    <ul id="fc-list"></ul>
+                </div>
+                <div>
+                    <h3>Practice</h3>
+                    <p id="fc-display-front">No cards yet.</p>
+                    <p id="fc-display-back" class="muted"></p>
+                    <button onclick="showFlashcard()">Next Card</button>
+                    <button onclick="toggleFlashcard()">Show / Hide Answer</button>
+                </div>
+            </div>
+        </section>
 
-</main>
+        <!-- QUIZZES -->
+        <section class="tool" id="quizzes">
+            <h2>Quizzes</h2>
+            <div class="inline">
+                <select id="quiz-select"></select>
+                <button onclick="startQuiz()">Start Quiz</button>
+            </div>
+            <div id="quiz-area"></div>
+            <button id="quiz-submit" style="display:none" onclick="submitQuiz()">Submit Quiz</button>
+            <p id="quiz-result"></p>
+        </section>
+
+        <!-- TIMERS -->
+        <section class="tool" id="timers">
+            <h2>Timers</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>Pomodoro</h3>
+                    <p id="pomodoro-display">25:00</p>
+                    <button onclick="startPomodoro()">Start</button>
+                    <button onclick="resetPomodoro()">Reset</button>
+                </div>
+                <div class="card">
+                    <h3>Stopwatch</h3>
+                    <p id="stopwatch-display">00:00:00</p>
+                    <button onclick="startStopwatch()">Start</button>
+                    <button onclick="stopStopwatch()">Stop</button>
+                    <button onclick="resetStopwatch()">Reset</button>
+                </div>
+                <div class="card">
+                    <h3>Countdown</h3>
+                    <input id="cd-minutes" type="number" placeholder="Minutes">
+                    <p id="cd-display">00:00</p>
+                    <button onclick="startCountdown()">Start</button>
+                    <button onclick="resetCountdown()">Reset</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONVERTERS -->
+        <section class="tool" id="converters">
+            <h2>Unit Converters</h2>
+
+            <h3>Length (m ↔ ft)</h3>
+            <div class="inline">
+                <input id="len-m" placeholder="Meters">
+                <button onclick="mToFt()">→</button>
+                <input id="len-ft" placeholder="Feet">
+                <button onclick="ftToM()">←</button>
+            </div>
+
+            <h3>Mass (kg ↔ lb)</h3>
+            <div class="inline">
+                <input id="mass-kg" placeholder="Kilograms">
+                <button onclick="kgToLb()">→</button>
+                <input id="mass-lb" placeholder="Pounds">
+                <button onclick="lbToKg()">←</button>
+            </div>
+
+            <h3>Temperature (°C ↔ °F)</h3>
+            <div class="inline">
+                <input id="temp-c" placeholder="Celsius">
+                <button onclick="cToF()">→</button>
+                <input id="temp-f" placeholder="Fahrenheit">
+                <button onclick="fToC()">←</button>
+            </div>
+        </section>
+
+        <!-- CBM -->
+        <section class="tool" id="cbm">
+            <h2>CBM Calculator (Cubic Meters)</h2>
+
+            <h3>Box Dimensions</h3>
+            <div class="inline">
+                <input id="cbm-length" placeholder="Length">
+                <input id="cbm-width" placeholder="Width">
+                <input id="cbm-height" placeholder="Height">
+            </div>
+            <select id="cbm-unit">
+                <option value="cm">cm</option>
+                <option value="m">m</option>
+                <option value="in">inches</option>
+                <option value="ft">feet</option>
+            </select>
+            <button onclick="calcCBM()">Calculate CBM</button>
+            <p id="cbm-output"></p>
+
+            <h3>Volume Converter</h3>
+            <div class="inline">
+                <input id="cbm-value" placeholder="Enter value">
+                <select id="cbm-type">
+                    <option value="m3">Cubic Meters (m³)</option>
+                    <option value="ft3">Cubic Feet (ft³)</option>
+                    <option value="liters">Liters (L)</option>
+                    <option value="gallons">Gallons (US)</option>
+                </select>
+            </div>
+            <button onclick="convertCBM()">Convert</button>
+            <p id="cbm-convert-output"></p>
+        </section>
+
+        <!-- CALCULATOR -->
+        <section class="tool" id="calculator">
+            <h2>Calculator</h2>
+            <input id="calc-display" readonly>
+            <div id="calc-buttons"></div>
+        </section>
+
+        <!-- EXTRAS -->
+        <section class="tool" id="extras">
+            <h2>Extras</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>Password Generator</h3>
+                    <button onclick="generatePassword()">Generate</button>
+                    <p id="password-output"></p>
+                </div>
+
+                <div class="card">
+                    <h3>Random Name Picker</h3>
+                    <textarea id="names-box" placeholder="Enter names, one per line"></textarea>
+                    <button onclick="pickName()">Pick</button>
+                    <p id="picked-name"></p>
+                </div>
+
+                <div class="card">
+                    <h3>Weather Widget</h3>
+                    <input id="weather-location" placeholder="Enter location label">
+                    <input id="weather-temp" placeholder="Temp (e.g. 72°F)">
+                    <button onclick="setWeather()">Set</button>
+                    <p id="weather-display">Not set.</p>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <h3>File Uploader</h3>
+                    <input id="file-input" type="file" multiple>
+                    <button onclick="listFiles()">Show Files</button>
+                    <ul id="file-list"></ul>
+                </div>
+
+                <div class="card">
+                    <h3>AI Study Helper (Prompts)</h3>
+                    <select id="ai-helper-type">
+                        <option value="explain">Explain this topic</option>
+                        <option value="quiz">Create practice questions</option>
+                        <option value="summarize">Summarize this text</option>
+                    </select>
+                    <textarea id="ai-helper-input" placeholder="Paste topic or text here..."></textarea>
+                    <button onclick="buildStudyPrompt()">Generate Prompt</button>
+                    <textarea id="ai-helper-output" readonly placeholder="Copy this into your AI tool."></textarea>
+                </div>
+            </div>
+        </section>
+
+    </main>
+</div>
 
 <script src="script.js"></script>
 </body>
