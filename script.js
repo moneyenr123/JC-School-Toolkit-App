@@ -204,10 +204,6 @@ let quizFiles = [
     "quizzes/grade6.js",
     "quizzes/grade7.js",
     "quizzes/grade8.js",
-    "quizzes/algebra1.js",
-    "quizzes/geometry.js",
-    "quizzes/algebra2.js",
-    "quizzes/precalc.js"
 ];
 
 function loadAllQuizzes() {
