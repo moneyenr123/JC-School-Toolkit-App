@@ -186,6 +186,44 @@ function toggleFlashcard() {
 }
 
 // ---------- QUIZZES ----------
+
+let quizBank = {};
+let quizFiles = [
+    "quizzes/grade1.js",
+    "quizzes/grade2.js",
+    "quizzes/grade3.js",
+    "quizzes/grade4.js",
+    "quizzes/grade5.js",
+    "quizzes/grade6.js",
+    "quizzes/grade7.js",
+    "quizzes/grade8.js",
+    "quizzes/algebra1.js",
+    "quizzes/geometry.js",
+    "quizzes/algebra2.js",
+    "quizzes/precalc.js"
+];
+
+function loadAllQuizzes() {
+    quizFiles.forEach(file => {
+        let script = document.createElement("script");
+        script.src = file;
+        document.body.appendChild(script);
+    });
+}
+
+window.onload = () => {
+    loadAllQuizzes();
+    renderCalendar();
+    updatePomodoro();
+    updateStopwatch();
+    updateCountdown();
+    initCalculator();
+    populateQuizSelect();
+    initDashboard();
+
+    const savedNotes = localStorage.getItem("jc_notes");
+    if (savedNotes) document.getElementById("notes-box").value = savedNotes;
+};
 const quizBank = {
     "g6-fractions": {
         name: "Grade 6 – Fractions",
