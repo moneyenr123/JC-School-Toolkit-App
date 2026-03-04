@@ -58,3 +58,50 @@ button {
 button:hover {
     background: #3aa0ff;
 }
+
+/* Calendar */
+#calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+}
+
+.calendar-day {
+    padding: 12px;
+    background: #0f1218;
+    border: 1px solid #1e90ff;
+    text-align: center;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.calendar-day.selected,
+.calendar-day:hover {
+    background: #1e90ff;
+}
+
+/* Calculator */
+#calc-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+}
+
+.calc-btn {
+    padding: 15px;
+    background: #0f1218;
+    border: 1px solid #1e90ff;
+    text-align: center;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.calc-btn:hover {
+    background: #1e90ff;
+}
